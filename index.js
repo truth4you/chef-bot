@@ -36,8 +36,10 @@ const start = () => {
                         const name = await contract.name()
                         const symbol = await contract.symbol()
                         const text = [
+                            `💛<b>New Token deployed on ${chain.name}</b>💛`,
+                            `<br>`,
                             `<a href="${chain.scan.replace("{address}", tx.creates)}">`,
-                                `ERC Token: ${name}(${symbol}) on ${chain.name}`,
+                                `${name}(${symbol})`,
                             `</a>`
                         ].join('')
                         bot.sendMessage(channel, text, { parse_mode:'HTML', disable_web_page_preview: true })
@@ -50,10 +52,12 @@ const start = () => {
                             }
                             try {
                                 const { data } = await axios.get(chain.source.replace("{address}", tx.creates))
-                                if(data.status==1 && data.message=="OK" && data.result && data.result[0].ContractName)  {
+                                if(data.status==1 && data.message=="OK" && data.result && /masterchef/i.test(data.result[0].ContractName))  {
                                     const text = [
+                                        `💙<b>New Contract deployed</b> on ${chain.name}💙`,
+                                        `<br>`,
                                         `<a href="${chain.scan.replace("{address}", tx.creates)}">`,
-                                            `${data.result[0].ContractName} on ${chain.name}`,
+                                            `${data.result[0].ContractName}`,
                                         `</a>`
                                     ].join('')
                                     bot.sendMessage(channel, text, { parse_mode:'HTML', disable_web_page_preview: true })
