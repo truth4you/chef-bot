@@ -1,5 +1,7 @@
 const { default: axios } = require("axios")
 const { ethers } = require("ethers")
+const express = require('express')
+const app = express()
 // const { Telegraf } = require('telegraf')
 const TelegramBot = require('node-telegram-bot-api')
 
@@ -78,3 +80,12 @@ const start = () => {
 }
 
 start()
+
+app.use(cors({
+    origin: '*'
+}))
+app.use(bodyParser.json())
+const port = process.argv[2] ?? 8000
+app.listen(port, () => {
+    console.log(`Backend is started thru ${port}!`)
+})
