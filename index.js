@@ -2,6 +2,8 @@ const { default: axios } = require("axios")
 const { ethers } = require("ethers")
 const express = require('express')
 const app = express()
+const cors = require('cors')
+const bodyParser = require('body-parser')
 // const { Telegraf } = require('telegraf')
 const TelegramBot = require('node-telegram-bot-api')
 
@@ -11,6 +13,9 @@ const chains = require("./chains.json")
 const abiERC20 = [
     "function name() public view returns (string)",
     "function symbol() public view returns (string)",
+]
+const abiMasterChef = [
+    "function poolLength() public view returns (uint256)",
 ]
 const channel = -1001571309828
 
@@ -69,8 +74,14 @@ const start = () => {
                             } catch(ex) {}
                             setTimeout(() => checkSource(count-1), 60000)
                         }
-                        checkSource(100)
-                        console.log(chain.name, tx.creates)
+                        const contract = new ethers.Contract(tx.creates, abiMasterChef, provider)
+                        try {
+                            await contract.poolLength()
+                            checkSource(100)
+                            console.log(chain.name, tx.creates, "would be a Masterchef")
+                        } catch(ex) {
+                            console.log(chain.name, tx.creates, "is not a Masterchef")
+                        }
                         // bot.sendMessage(channel, tx.creates, { parse_mode:'HTML', disable_web_page_preview: true })
                     }
                 })
