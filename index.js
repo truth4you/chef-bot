@@ -37,7 +37,7 @@ const start = () => {
                         const symbol = await contract.symbol()
                         const text = [
                             `💛<b>New Token deployed on ${chain.name}</b>💛`,
-                            `<br>`,
+                            `\n`,
                             `<a href="${chain.scan.replace("{address}", tx.creates)}">`,
                                 `${name}(${symbol})`,
                             `</a>`
@@ -55,7 +55,7 @@ const start = () => {
                                 if(data.status==1 && data.message=="OK" && data.result && /masterchef/i.test(data.result[0].ContractName))  {
                                     const text = [
                                         `💙<b>New Contract deployed</b> on ${chain.name}💙`,
-                                        `<br>`,
+                                        `\n`,
                                         `<a href="${chain.scan.replace("{address}", tx.creates)}">`,
                                             `${data.result[0].ContractName}`,
                                         `</a>`
