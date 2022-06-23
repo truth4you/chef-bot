@@ -1,0 +1,23 @@
+[
+    {
+        "id": "43113",
+        "name": "Avalanche",
+        "url": "https://api.avax-test.network/ext/bc/C/rpc",
+        "scan": "https://testnet.snowtrace.io/address/{address}",
+        "source": "https://api-testnet.snowtrace.io/api?module=contract&action=getsourcecode&address={address}&apikey=ZGR21YGDGQSIVXI5B2NR5K73MFCDI4QPH8"
+    },
+    {
+        "id": "4002",
+        "name": "Fantom",
+        "url": "https://rpc.testnet.fantom.network/",
+        "scan": "https://testnet.ftmscan.com/address/{address}",
+        "source": "https://api-testnet.ftmscan.com/api?module=contract&action=getsourcecode&address={address}&apikey=WF1AMWQ7AUZGPAUANYXDMIS3GWB9JJ4CHH"
+    },
+    {
+        "id": "97",
+        "name": "Binance",
+        "url": "https://speedy-nodes-nyc.moralis.io/89b4f5c6d2fc13792dcaf416/bsc/testnet",
+        "scan": "https://testnet.bscscan.com/address/{address}",
+        "source": "https://api-testnet.bscscan.com/api?module=contract&action=getsourcecode&address={address}&apikey=GJQFD5BXR754QEI1221TPAM94IRIE7B2FD"
+    }
+]
