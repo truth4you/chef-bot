@@ -52,7 +52,7 @@ const start = () => {
                                 const { data } = await axios.get(chain.source.replace("{address}", tx.creates))
                                 if(data.status==1 && data.message=="OK" && data.result && data.result[0].ContractName)  {
                                     const text = [
-                                        `<a href="${chain.scan.replace("{address}, tx.creates")}">`,
+                                        `<a href="${chain.scan.replace("{address}", tx.creates)}">`,
                                             `${data.result[0].ContractName} on ${chain.name}`,
                                         `</a>`
                                     ].join('')
