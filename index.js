@@ -1,6 +1,7 @@
 const { default: axios } = require("axios")
 const { ethers } = require("ethers")
-const { Telegraf } = require('telegraf')
+// const { Telegraf } = require('telegraf')
+const TelegramBot = require('node-telegram-bot-api')
 
 require('dotenv').config()
 
@@ -12,9 +13,10 @@ const abiERC20 = [
 const channel = -1001571309828
 
 const start = () => {
-    const bot = new Telegraf('1749367461:AAFfMWTNPuPVltHlZ3VsmN6nf_Vza41a88w')
-    console.log(bot)
-    bot.launch()
+    const bot = new TelegramBot('1749367461:AAFfMWTNPuPVltHlZ3VsmN6nf_Vza41a88w')
+    // const bot = new Telegraf('1749367461:AAFfMWTNPuPVltHlZ3VsmN6nf_Vza41a88w')
+    // console.log(bot)
+    // bot.launch()
     for(const chain of chains) {
         const provider = new ethers.providers.JsonRpcProvider(chain.url)
         provider.on('block', blockNumber => {
