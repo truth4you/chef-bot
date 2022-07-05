@@ -17,7 +17,7 @@ const abiERC20 = [
 const abiMasterChef = [
     "function poolLength() public view returns (uint256)",
 ]
-const channel = -1001571309828
+const channel = -1001302968513
 
 const start = () => {
     const bot = new TelegramBot('1749367461:AAFfMWTNPuPVltHlZ3VsmN6nf_Vza41a88w')
@@ -96,7 +96,7 @@ app.use(cors({
     origin: '*'
 }))
 app.use(bodyParser.json())
-const port = process.argv[2] ?? 8000
+const port = process.argv[2] || 8000
 app.listen(port, () => {
     console.log(`Backend is started thru ${port}!`)
 })

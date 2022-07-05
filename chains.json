@@ -1,23 +1,37 @@
 [
     {
-        "id": "43113",
+        "id": "43114",
         "name": "Avalanche",
-        "url": "https://api.avax-test.network/ext/bc/C/rpc",
-        "scan": "https://testnet.snowtrace.io/address/{address}",
-        "source": "https://api-testnet.snowtrace.io/api?module=contract&action=getsourcecode&address={address}&apikey=ZGR21YGDGQSIVXI5B2NR5K73MFCDI4QPH8"
+        "url": "https://api.avax.network/ext/bc/C/rpc",
+        "scan": "https://snowtrace.io/address/{address}",
+        "source": "https://api.snowtrace.io/api?module=contract&action=getsourcecode&address={address}&apikey=ZGR21YGDGQSIVXI5B2NR5K73MFCDI4QPH8"
     },
     {
-        "id": "4002",
+        "id": "250",
         "name": "Fantom",
-        "url": "https://rpc.testnet.fantom.network/",
-        "scan": "https://testnet.ftmscan.com/address/{address}",
-        "source": "https://api-testnet.ftmscan.com/api?module=contract&action=getsourcecode&address={address}&apikey=WF1AMWQ7AUZGPAUANYXDMIS3GWB9JJ4CHH"
+        "url": "https://rpc.ankr.com/fantom",
+        "scan": "https://ftmscan.com/address/{address}",
+        "source": "https://api.ftmscan.com/api?module=contract&action=getsourcecode&address={address}&apikey=WF1AMWQ7AUZGPAUANYXDMIS3GWB9JJ4CHH"
     },
     {
-        "id": "97",
+        "id": "56",
         "name": "Binance",
-        "url": "https://speedy-nodes-nyc.moralis.io/89b4f5c6d2fc13792dcaf416/bsc/testnet",
-        "scan": "https://testnet.bscscan.com/address/{address}",
-        "source": "https://api-testnet.bscscan.com/api?module=contract&action=getsourcecode&address={address}&apikey=GJQFD5BXR754QEI1221TPAM94IRIE7B2FD"
+        "url": "https://bsc-dataseed.binance.org",
+        "scan": "https://bscscan.com/address/{address}",
+        "source": "https://api.bscscan.com/api?module=contract&action=getsourcecode&address={address}&apikey=GJQFD5BXR754QEI1221TPAM94IRIE7B2FD"
+    },
+    {
+        "id": "137",
+        "name": "Polygon",
+        "url": "https://polygon-rpc.com/",
+        "scan": "https://polygonscan.com/address/{address}",
+        "source": "https://api.polygonscan.com/api?module=contract&action=getsourcecode&address={address}&apikey=NBD1FGCJGU8VY14T9GXFJNFVPVYSGPGGDN"
+    },
+    {
+        "id": "338",
+        "name": "Cronos",
+        "url": "https://evm-cronos.crypto.org/",
+        "scan": "https://cronoscan.com/address/{address}",
+        "source": "https://api.cronoscan.com/api?module=contract&action=getsourcecode&address={address}&apikey=NSN43S2VINP6JHR5TTRCTWF63ZKEP73S7Z"
     }
 ]
