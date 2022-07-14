@@ -52,39 +52,39 @@ const start = () => {
                     //     bot.sendMessage(channel, text, { parse_mode:'HTML', disable_web_page_preview: true })
                     //     console.log(chain.name, tx.creates, name, symbol)
                     // } catch(ex) {
-                        const checkSource = async (count) => {
-                            if(count==0) {
-                                console.log(chain.name, tx.creates, "Unverified for last 100 minutes")
+                    const checkSource = async (count) => {
+                        if(count==0) {
+                            console.log(chain.name, tx.creates, "Unverified for last 100 minutes")
+                            return
+                        }
+                        try {
+                            const { data } = await axios.get(chain.source.replace("{address}", tx.creates))
+                            if(data.status==1 && data.message=="OK" && data.result && /masterchef/i.test(data.result[0].ContractName))  {
+                                const text = [
+                                    `💙<b>New Contract deployed</b> on ${chain.name}💙`,
+                                    `\n`,
+                                    `<a href="${chain.scan.replace("{address}", tx.creates)}">`,
+                                        `${data.result[0].ContractName}`,
+                                    `</a>`
+                                ].join('')
+                                bot.sendMessage(channel, text, { parse_mode:'HTML', disable_web_page_preview: true })
+                                console.log(chain.name, tx.creates, data.result[0].ContractName)
                                 return
                             }
-                            try {
-                                const { data } = await axios.get(chain.source.replace("{address}", tx.creates))
-                                if(data.status==1 && data.message=="OK" && data.result && /masterchef/i.test(data.result[0].ContractName))  {
-                                    const text = [
-                                        `💙<b>New Contract deployed</b> on ${chain.name}💙`,
-                                        `\n`,
-                                        `<a href="${chain.scan.replace("{address}", tx.creates)}">`,
-                                            `${data.result[0].ContractName}`,
-                                        `</a>`
-                                    ].join('')
-                                    bot.sendMessage(channel, text, { parse_mode:'HTML', disable_web_page_preview: true })
-                                    console.log(chain.name, tx.creates, data.result[0].ContractName)
-                                    return
-                                }
-                            } catch(ex) {}
-                            setTimeout(() => checkSource(count-1), 60000)
-                        }
-                        const contract = new ethers.Contract(tx.creates, abiMasterChef, provider)
-                        try {
-                            await contract.poolLength()
-                            checkSource(100)
-                            console.log(chain.name, tx.creates, "would be a Masterchef")
-                        } catch(ex) {
-                            console.log(chain.name, tx.creates, "is not a Masterchef")
-                        }
+                        } catch(ex) {}
+                        setTimeout(() => checkSource(count-1), 60000)
+                    }
+                    const contract = new ethers.Contract(tx.creates, abiMasterChef, provider)
+                    try {
+                        await contract.poolLength()
+                        checkSource(100)
+                        console.log(chain.name, tx.creates, "would be a Masterchef")
+                    } catch(ex) {
+                        console.log(chain.name, tx.creates, "is not a Masterchef")
+                    }
                         // bot.sendMessage(channel, tx.creates, { parse_mode:'HTML', disable_web_page_preview: true })
                 //     }
-                // })
+                })
             }).catch(err => console.error(err.message))
         })
     }
