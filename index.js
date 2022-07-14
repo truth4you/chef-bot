@@ -38,20 +38,20 @@ const start = () => {
                     return tx.to===null && tx.creates
                 })
                 txs.map(async tx => {
-                    try {
-                        const contract = new ethers.Contract(tx.creates, abiERC20, provider)
-                        const name = await contract.name()
-                        const symbol = await contract.symbol()
-                        const text = [
-                            `💛<b>New Token deployed on ${chain.name}</b>💛`,
-                            `\n`,
-                            `<a href="${chain.scan.replace("{address}", tx.creates)}">`,
-                                `${name}(${symbol})`,
-                            `</a>`
-                        ].join('')
-                        bot.sendMessage(channel, text, { parse_mode:'HTML', disable_web_page_preview: true })
-                        console.log(chain.name, tx.creates, name, symbol)
-                    } catch(ex) {
+                    // try {
+                    //     const contract = new ethers.Contract(tx.creates, abiERC20, provider)
+                    //     const name = await contract.name()
+                    //     const symbol = await contract.symbol()
+                    //     const text = [
+                    //         `💛<b>New Token deployed on ${chain.name}</b>💛`,
+                    //         `\n`,
+                    //         `<a href="${chain.scan.replace("{address}", tx.creates)}">`,
+                    //             `${name}(${symbol})`,
+                    //         `</a>`
+                    //     ].join('')
+                    //     bot.sendMessage(channel, text, { parse_mode:'HTML', disable_web_page_preview: true })
+                    //     console.log(chain.name, tx.creates, name, symbol)
+                    // } catch(ex) {
                         const checkSource = async (count) => {
                             if(count==0) {
                                 console.log(chain.name, tx.creates, "Unverified for last 100 minutes")
@@ -83,8 +83,8 @@ const start = () => {
                             console.log(chain.name, tx.creates, "is not a Masterchef")
                         }
                         // bot.sendMessage(channel, tx.creates, { parse_mode:'HTML', disable_web_page_preview: true })
-                    }
-                })
+                //     }
+                // })
             }).catch(err => console.error(err.message))
         })
     }
