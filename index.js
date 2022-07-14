@@ -20,7 +20,7 @@ const abiMasterChef = [
 const channel = -1001302968513
 
 const start = () => {
-    const bot = new TelegramBot('1749367461:AAFfMWTNPuPVltHlZ3VsmN6nf_Vza41a88w')
+    const bot = new TelegramBot('5343423592:AAE9Y5GT2-TecPbnJsKe9BI-bipWJ5g6O5A')
     // const bot = new TelegramBot('1749367461:AAFfMWTNPuPVltHlZ3VsmN6nf_Vza41a88w', {
     //     baseApiUrl: "https://192.168.91.52",
     //     request: {
